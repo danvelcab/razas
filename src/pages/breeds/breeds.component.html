@@ -1,0 +1,16 @@
+Breed: 
+<ng-select
+    *ngIf="loaded"
+    [items]="breeds"        
+    bindLabel="secondaryBreed"
+    bindValue="secondaryBreed"
+    [(ngModel)]="selectedBreed"    
+    [placeholder]="'Select an option'"
+    (change)="breedImagesList()"
+    groupBy="mainBreed">
+</ng-select>
+
+
+<ng-container *ngFor="let image of breedImages">
+    <img [defaultImage]="" [lazyLoad]="image.src">
+</ng-container>
