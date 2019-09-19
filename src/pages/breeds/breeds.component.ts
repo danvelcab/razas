@@ -52,20 +52,22 @@ export class BreedsComponent implements OnInit {
    */
   breedImagesList(): void {
     this.breedImages = [];
-    this.breedService.breedImageList(this.selectedBreed).subscribe(
-      res => {
-        if(res['message']) {
-          let images = res['message'];
-          for(let image of images) {
-            let newImage = new Image(image);
-            this.breedImages.push(newImage)
-          }
-        }    
-      },
-      error => {
-        alert('error');
-      }
-    );
+    if(this.selectedBreed) { // Solo pedimos las imagenes si está vacío
+      this.breedService.breedImageList(this.selectedBreed).subscribe(
+        res => {
+          if(res['message']) {
+            let images = res['message'];
+            for(let image of images) {
+              let newImage = new Image(image);
+              this.breedImages.push(newImage)
+            }
+          }    
+        },
+        error => {
+          alert('error');
+        }
+      );
+    }
   }
 
   private addBreed(mainBreed: string, secondaryBreed: string): void {

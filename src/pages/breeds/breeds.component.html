@@ -4,7 +4,8 @@ Breed:
     [items]="breeds"        
     bindLabel="secondaryBreed"
     bindValue="secondaryBreed"
-    [(ngModel)]="selectedBreed"    
+    [(ngModel)]="selectedBreed"
+    [selectableGroup]="true"    
     [placeholder]="'Select an option'"
     (change)="breedImagesList()"
     groupBy="mainBreed">
@@ -14,3 +15,4 @@ Breed:
 <ng-container *ngFor="let image of breedImages">
     <img [lazyLoad]="image.src">
 </ng-container>
+<!--Podriamos poner una páginación (por ejemplo con ngx-pagination) pero he preferido añadir lazy loading-->
